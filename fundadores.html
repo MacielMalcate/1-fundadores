@@ -1,0 +1,184 @@
+ <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundadores ODONTOSIMPLES</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background-color: #121212;
+            color: #f1f1f1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            width: 100%;
+            background-color: #1e1e1e;
+            text-align: center;
+            padding: 25px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        header h1 {
+            color: #00d1b2;
+            margin: 0;
+            font-size: 2em;
+        }
+
+        header p {
+            color: #ccc;
+            margin: 10px 0 0;
+            font-size: 1.1em;
+        }
+
+        .content {
+            max-width: 500px;
+            width: 90%;
+            background-color: #1e1e1e;
+            margin-top: 40px;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        .content h2 {
+            color: #00d1b2;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            color: #bbb;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .counter {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            color: #fff;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 6px;
+            color: #ccc;
+        }
+
+        input {
+            background-color: #2b2b2b;
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: #fff;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 1em;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #00d1b2;
+        }
+
+        button {
+            background-color: #00d1b2;
+            border: none;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 1.1em;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #00b39d;
+        }
+
+        .footer {
+            margin-top: auto;
+            padding: 20px;
+            color: #888;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .highlight {
+            color: #00d1b2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🌟 Fundadores ODONTOSIMPLES</h1>
+        <p>Seja um dos <span class="highlight">200 DENTISTAS FUNDADORES</span> e garanta acesso completo por apenas 
+            <span class="highlight" style="font-size:1.2em;">R$29,90/mês</span>. Depois, o preço será 
+            <span style="color:#888; font-size:0.9em;">R$99,90</span>. 
+        </p>
+    </header>
+
+    <div class="content">
+        <h2>Garanta seu acesso antecipado!</h2>
+        <p>O ODONTOSIMPLES é um sistema inteligente de gestão odontológica criado por <span class="highlight">DENTISTA</span>.  
+        Faça parte do grupo exclusivo que ajudará a moldar o futuro da odontologia digital.</p>
+
+        <div class="counter" id="counter">Vagas restantes: 200</div>
+
+        <form id="fundadoresForm">
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" placeholder="Digite seu nome" required>
+
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="Digite seu e-mail" required>
+
+            <label for="whatsapp">WhatsApp</label>
+            <input type="tel" id="whatsapp" placeholder="(DDD) 9XXXX-XXXX" required>
+
+            <button type="submit">Quero ser um Fundador</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        © 2025 ODONTOSIMPLES — Todos os direitos reservados.
+    </div>
+
+    <script>
+        const numeroWhatsApp = "5533999896134"; // Coloque seu número completo com DDI e DDD
+        let vagas = 200;
+        const counter = document.getElementById("counter");
+
+        document.getElementById("fundadoresForm").addEventListener("submit", function(e){
+            e.preventDefault();
+
+            if(vagas <= 0){
+                alert("Desculpe, todas as vagas foram preenchidas.");
+                return;
+            }
+
+            const nome = document.getElementById("nome").value;
+            const email = document.getElementById("email").value;
+            const whatsapp = document.getElementById("whatsapp").value;
+
+            const mensagem = `Olá, quero me inscrever como DENTISTA FUNDADOR do ODONTOSIMPLES.%0ANome: ${nome}%0AE-mail: ${email}%0AWhatsApp: ${whatsapp}`;
+            const link = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
+
+            window.open(link, "_blank");
+
+            vagas--;
+            counter.textContent = `Vagas restantes: ${vagas}`;
+            this.reset();
+        });
+    </script>
+</body>
+</html>
